@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peter's Music</title>
+    {% style "/css/screen.css" %}
+</head>
+<body>
+<h1>{{release.title}}</h1>
+<a href="/artist/{{release.artist.id}}">{{release.artist.name}}</a><br>
+Released: {{release.released}}<br>
+{% if release.label %}Label: {{release.label}}<br>{% endif %}
+{% if release.catalog %}Catalog: {{release.catalog}}{% endif %}
+{% for media in release.medias %}
+<h3>{{media.name}}{% if media.title %} {{media.title}}{% endif %}</h3>
+{% for track in media.tracks %}
+<div class="track">
+    {{track.side}}-{{track.number|number-format:%02d}} {{track.title}}
+</div>
+{% endfor %}
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,14 @@
+html,
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    height: 100%;
+}
+nav {
+    margin-bottom: 20px;
+}
+.rel {
+    border-left: 6px solid green;
+    background-color: lightgrey;
+    padding: 5px;
+    margin: 5px;
+}
