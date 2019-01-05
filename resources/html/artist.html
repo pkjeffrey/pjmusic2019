@@ -9,11 +9,14 @@
 <h1>{{artist.name}}</h1>
 {% for rel in releases %}
 <div class="rel">
-    <a href="/release/{{rel.id}}">{{rel.title}}</a><br>
-    {% if rel.artist %}<a href="/artist/{{rel.artist.id}}">{{rel.artist.name}}</a><br>{% endif %}
-    Released: {{rel.released}}<br>
-    {% if rel.label %}Label: {{rel.label}}<br>{% endif %}
-    {% if rel.catalog %}Catalog: {{rel.catalog}}{% endif %}
+    <div class="relart"><img src="/release-art/{{rel.id}}" width="210" height="210"></div>
+    <div class="relinfo">
+        <a href="/release/{{rel.id}}">{{rel.title}}</a><br>
+        {% if rel.artist %}<a href="/artist/{{rel.artist.id}}">{{rel.artist.name}}</a><br>{% endif %}
+        Released: {{rel.released}}<br>
+        {% if rel.label %}Label: {{rel.label}}<br>{% endif %}
+        {% if rel.catalog %}Catalog: {{rel.catalog}}{% endif %}
+    </div>
 </div>
 {% endfor %}
 </body>

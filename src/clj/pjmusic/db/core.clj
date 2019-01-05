@@ -24,6 +24,13 @@
       :artist artist
       :medias (map #(assoc % :tracks (get-media-tracks {:id (:id %)})) medias))))
 
+(defn get-art [id]
+  (conman/with-transaction [*db*]
+                           (let [blob (:art (get-release-art {:id id}))
+                                 len (.length blob)
+                                 bytes (.getBytes blob 1 len)]
+                             bytes)))
+
 (extend-protocol jdbc/IResultSetReadColumn
   java.sql.Timestamp
   (result-set-read-column [v _2 _3]

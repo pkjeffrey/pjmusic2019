@@ -7,8 +7,19 @@ nav {
     margin-bottom: 20px;
 }
 .rel {
-    border-left: 6px solid green;
-    background-color: lightgrey;
-    padding: 5px;
+    border: 1px solid darkgrey;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    height: 333px;
+    margin: 10px;
+    float: left;
+    overflow: auto;
+}
+.relinfo {
+    margin: 5px;
+}
+.relart img{
+    border: 1px solid lightgrey;
+    padding: 0px;
     margin: 5px;
 }

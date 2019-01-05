@@ -17,6 +17,12 @@ select id, artist, title, released, label, catalog
 from release
 where id = :id
 
+-- :name get-release-art :? :1
+-- :doc get release artwork by release id
+select art
+from release
+where id = :id
+
 -- :name get-release-medias :? :*
 -- :doc get medias for release
 select m.id, f.name, m.title

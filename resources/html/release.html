@@ -6,6 +6,7 @@
     {% style "/css/screen.css" %}
 </head>
 <body>
+<div class="relart"><img src="/release-art/{{release.id}}" width="450" height="450"></div>
 <h1>{{release.title}}</h1>
 <a href="/artist/{{release.artist.id}}">{{release.artist.name}}</a><br>
 Released: {{release.released}}<br>
