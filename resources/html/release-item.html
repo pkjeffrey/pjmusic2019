@@ -1,0 +1,11 @@
+<div class="rel">
+    <div class="relart"><img src="/release-art/{{rel.id}}"></div>
+    <div class="relinfo">
+        <p><a href="/release/{{rel.id}}">{{rel.title}}</a></p>
+        {% if rel.artist %}<p>by <a href="/artist/{{rel.artist.id}}">{{rel.artist.name}}</a></p>{% endif %}
+        <p>{{rel.media-descr}}</p>
+        <p>Released: {{rel.released}}</p>
+        {% if rel.label %}<p>Label: {{rel.label}}</p>{% endif %}
+        {% if rel.catalog %}<p>Catalog: {{rel.catalog}}</p>{% endif %}
+    </div>
+</div>

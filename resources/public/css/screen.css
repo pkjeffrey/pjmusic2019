@@ -6,20 +6,58 @@ body {
 nav {
     margin-bottom: 20px;
 }
-.rel {
-    border: 1px solid darkgrey;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: white;
-    height: 333px;
+.release {
     margin: 10px;
-    float: left;
     overflow: auto;
 }
-.relinfo {
-    margin: 5px;
+.release .relart {
+    float: left;
+    margin: 0 10px 0 0;
 }
-.relart img{
-    border: 1px solid lightgrey;
-    padding: 0px;
-    margin: 5px;
+.release .relart img {
+    width: 320px;
+    border: 1px solid #ccc;
+}
+.rellist {
+    display: flex;
+    flex-wrap: wrap;
+}
+.rellist .rel {
+    width: 210px;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #999;
+    box-shadow: 5px 5px 8px #666;
+}
+.rellist .relart img{
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.rellist .relinfo {
+    padding: 8px 0;
+}
+.relinfo h1 {
+    margin: 0;
+}
+.relinfo a {
+    text-decoration: none;
+    color: #039;
+    font-size: 1.1em;
+}
+.relinfo a:focus,
+.relinfo a:hover,
+.relinfo a:active {
+    color: #f90;
+}
+.relinfo p {
+    margin: 2px 0;
+}
+.tracks {
+    margin: 10px;
+}
+.tracks h1 {
+    margin: 0
+}
+.tracklist p {
+    margin: 2px 0;
 }

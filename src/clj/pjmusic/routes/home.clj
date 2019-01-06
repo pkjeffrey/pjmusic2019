@@ -1,22 +1,23 @@
 (ns pjmusic.routes.home
   (:require [pjmusic.layout :as layout]
-            [pjmusic.db.core :as db]
+            [pjmusic.routes.music.core :as music]
             [compojure.core :refer [defroutes GET]]
             [ring.util.http-response :as response]
-            [clojure.java.io :as io])
-  (:import (java.io ByteArrayInputStream)))
+            [clojure.java.io :as io]))
 
 (defn home-page []
-  (layout/render "recent.html" {:releases (db/get-recent-releases 8)}))
+  (layout/render "recent.html" {:releases (music/get-recent-releases 10)}))
 
 (defn artist-page [id]
-  (layout/render "artist.html" (assoc {:artist (db/get-artist {:id id})} :releases (db/get-artist-releases {:id id}))))
+  (layout/render "artist.html" {:artist (music/get-artist id)
+                                :releases (music/get-artist-releases id)}))
 
 (defn release-page [id]
-  (layout/render "release.html" {:release (db/get-release-tracks id)}))
+  (layout/render "release.html" {:release (music/get-release id)
+                                 :medias (music/get-release-medias id)}))
 
-(defn get-release-art [id]
-  (-> (ByteArrayInputStream. (db/get-art id))
+(defn get-release-image [id]
+  (-> (music/get-release-image id)
       (response/ok)
       (response/content-type "image/jpeg")))
 
@@ -28,7 +29,7 @@
            (GET "/release/:id" [id]
              (release-page id))
            (GET "/release-art/:id" [id]
-             (get-release-art id))
+             (get-release-image id))
            (GET "/docs" []
              (-> (response/ok (-> "docs/docs.md" io/resource slurp))
                  (response/header "Content-Type" "text/plain; charset=utf-8"))))

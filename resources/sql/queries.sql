@@ -23,6 +23,16 @@ select art
 from release
 where id = :id
 
+-- :name get-release-media-descrs :? :*
+-- :doc get media descriptions for release
+select count(*) cnt, f.name
+from format f
+inner join media m
+on m.format = f.id
+where m.release = :id
+group by f.name, f.sort
+order by f.sort
+
 -- :name get-release-medias :? :*
 -- :doc get medias for release
 select m.id, f.name, m.title

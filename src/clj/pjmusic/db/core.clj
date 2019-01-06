@@ -12,19 +12,7 @@
 
 (conman/bind-connection *db* "sql/queries.sql")
 
-(defn get-recent-releases [num]
-  (let [rels (get-recent {:num num})]
-    (map #(assoc % :artist (get-artist {:id (:artist %)})) rels)))
-
-(defn get-release-tracks [id]
-  (let [rel (get-release {:id id})
-        artist (get-artist {:id (:artist rel)})
-        medias (get-release-medias {:id id})]
-    (assoc rel
-      :artist artist
-      :medias (map #(assoc % :tracks (get-media-tracks {:id (:id %)})) medias))))
-
-(defn get-art [id]
+(defn get-release-image [id]
   (conman/with-transaction [*db*]
                            (let [blob (:art (get-release-art {:id id}))
                                  len (.length blob)
