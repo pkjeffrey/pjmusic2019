@@ -1,10 +1,30 @@
 html,
 body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    height: 100%;
 }
-nav {
-    margin-bottom: 20px;
+.navbar {
+    background-color: #5f5f5f;
+    border-bottom: 1px solid #333;
+    margin: -8px;
+    padding: 1px 10px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+.navbar h1 {
+    display: inline-block;
+}
+.navbar h1 a {
+    text-decoration: none;
+    color: #fff;
+}
+.navbar h1 a:focus,
+.navbar h1 a:hover,
+.navbar h1 a:active {
+    color: #f90;
+}
+.navbar form {
+    display: inline-block;
 }
 .release {
     margin: 10px;

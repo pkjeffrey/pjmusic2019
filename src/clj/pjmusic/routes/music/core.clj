@@ -1,6 +1,12 @@
 (ns pjmusic.routes.music.core
-  (:require [pjmusic.db.core :as db])
+  (:require [clojure.string :as str]
+            [pjmusic.db.core :as db])
   (:import (java.io ByteArrayInputStream)))
+
+(defn api-suggest-artists [q]
+  (let [qs (re-seq #"[a-z]+|[0-9]+" (str/lower-case q))
+        artists (db/get-artists)]
+    (filter #(str/starts-with?))))
 
 (defn get-release-media-description [id]
   (let [descrs (map #(if (= 1 (:cnt %)) (:name %) (str (:cnt %) (:name %)))

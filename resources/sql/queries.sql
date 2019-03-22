@@ -4,6 +4,11 @@ select id, name
 from artist
 where id = :id
 
+-- :name get-artists :? :*
+-- :doc get list of all artists
+select id, name
+from artist
+
 -- :name get-artist-releases :? :*
 -- :doc get releases for artist
 select id, title, released, label, catalog

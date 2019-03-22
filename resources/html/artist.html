@@ -6,6 +6,7 @@
     {% style "/css/screen.css" %}
 </head>
 <body>
+{% include "navbar.html" %}
 <h1>{{artist.name}}</h1>
 <div class="rellist">
     {% for rel in releases %}

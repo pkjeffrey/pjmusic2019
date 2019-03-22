@@ -2,8 +2,8 @@
   (:require [pjmusic.middleware :as middleware]
             [pjmusic.layout :refer [error-page]]
             [pjmusic.routes.home :refer [home-routes]]
+            [pjmusic.routes.service :refer [service-routes]]
             [compojure.core :refer [routes wrap-routes]]
-            [ring.util.http-response :as response]
             [compojure.route :as route]
             [pjmusic.env :refer [defaults]]
             [mount.core :as mount]))
@@ -19,6 +19,7 @@
       (-> #'home-routes
           (wrap-routes middleware/wrap-csrf)
           (wrap-routes middleware/wrap-formats))
+      #'service-routes
       (route/not-found
         (:body
           (error-page {:status 404
