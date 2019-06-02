@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Peter's Music</title>
-    {% style "/css/screen.css" %}
-</head>
+{% include "head.html" %}
 <body>
 {% include "navbar.html" %}
 <div class="release">
     <div class="relart"><img src="/release-art/{{release.id}}"></div>
     <div class="relinfo">
         <h1>{{release.title}}</h1>
-        <p>by <a href="/artist/{{release.artist.id}}">{{release.artist.name}}</a></p>
+        <p>{% ifunequal "Y" release.compilation %}by {% endifunequal %}<a href="/artist/{{release.artist.id}}">{{release.artist.name}}</a></p>
         <p>{{release.media-descr}}</p>
         <p>Released: {{release.released}}</p>
         {% if release.label %}<p>Label: {{release.label}}</p>{% endif %}
@@ -23,7 +19,8 @@
     <h1>{{media.name}}{% if media.title %} {{media.title}}{% endif %}</h1>
     <div class="tracklist">
         {% for track in media.tracks %}
-        <p>{{track.side}}-{{track.number|number-format:%02d}} {{track.title}}</p>
+        <p>{{track.side}}-{{track.number|number-format:%02d}} {{track.title}}
+            {% ifequal "Y" release.compilation %} - by <a href="/artist/{{track.artist}}">{{track.artistname}}</a>{% endifequal %}</p>
         {% endfor %}
     </div>
     {% endfor %}

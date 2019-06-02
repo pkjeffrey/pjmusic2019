@@ -10,7 +10,8 @@
 
 (defn artist-page [id]
   (layout/render "artist.html" {:artist (music/get-artist id)
-                                :releases (music/get-artist-releases id)}))
+                                :releases (music/get-artist-releases id)
+                                :appears-on (music/get-artist-appears-on id)}))
 
 (defn release-page [id]
   (layout/render "release.html" {:release (music/get-release id)

@@ -1,6 +1,6 @@
 html,
 body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .navbar {
     background-color: #5f5f5f;
@@ -23,8 +23,11 @@ body {
 .navbar h1 a:active {
     color: #f90;
 }
-.navbar form {
-    display: inline-block;
+.navbar input {
+    border: 1px solid #ccc;
+    border-radius: 0;
+    padding: 3px;
+    width: 500px;
 }
 .release {
     margin: 10px;

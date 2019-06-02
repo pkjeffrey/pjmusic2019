@@ -16,9 +16,21 @@ from release
 where artist = :id
 order by released, added
 
+-- :name get-artist-appears-on :? :*
+-- :doc get releases that artist appears on
+select distinct r.id, r.title, r.released, r.label, r.catalog
+from release r
+inner join media m
+on m.release = r.id
+inner join track t
+on t.media = m.id
+where t.artist = :id
+and t.artist <> r.artist
+order by r.released, r.title
+
 -- :name get-release :? :1
 -- :doc get release by id
-select id, artist, title, released, label, catalog
+select id, artist, title, released, label, catalog, compilation
 from release
 where id = :id
 
@@ -49,10 +61,12 @@ order by m.id
 
 -- :name get-media-tracks :? :*
 -- :doc get tracks for media
-select id, side, number, title
-from track
-where media = :id
-order by side, number
+select t.id, t.side, t.number, t.title, t.artist, a.name artistname
+from track t
+inner join artist a
+on a.id = t.artist
+where t.media = :id
+order by t.side, t.number
 
 -- :name get-recent :? :*
 -- :doc get recent additions

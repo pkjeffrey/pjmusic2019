@@ -1,5 +1,5 @@
 <div class="rel">
-    <div class="relart"><img src="/release-art/{{rel.id}}"></div>
+    <div class="relart"><a href="/release/{{rel.id}}" title="{{rel.title}}"><img src="/release-art/{{rel.id}}"></a></div>
     <div class="relinfo">
         <p><a href="/release/{{rel.id}}">{{rel.title}}</a></p>
         {% if rel.artist %}<p>by <a href="/artist/{{rel.artist.id}}">{{rel.artist.name}}</a></p>{% endif %}

@@ -5,6 +5,7 @@
 
   :dependencies [[buddy "2.0.0"]
                  [cheshire "5.8.1"]
+                 [cljsjs/jquery-ui "1.11.4-0"]
                  [clojure.java-time "0.3.2"]
                  [com.cognitect/transit-clj "0.8.313"]
                  [compojure "1.6.1"]

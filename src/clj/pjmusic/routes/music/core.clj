@@ -3,10 +3,11 @@
             [pjmusic.db.core :as db])
   (:import (java.io ByteArrayInputStream)))
 
-(defn api-suggest-artists [q]
-  (let [qs (re-seq #"[a-z]+|[0-9]+" (str/lower-case q))
-        artists (db/get-artists)]
-    (filter #(str/starts-with?))))
+(defn api-suggest-artists [term]
+  (let [lower-term (str/lower-case term)
+        artists (db/get-artists)
+        suggestions (filter #(str/includes? (str/lower-case (:name %)) lower-term) artists)]
+    (map #(assoc % :label (:name %)) suggestions)))
 
 (defn get-release-media-description [id]
   (let [descrs (map #(if (= 1 (:cnt %)) (:name %) (str (:cnt %) (:name %)))
@@ -22,6 +23,12 @@
 
 (defn get-artist [id]
   (db/get-artist {:id id}))
+
+(defn get-artist-appears-on [id]
+  (let [rels (db/get-artist-appears-on {:id id})]
+    (map #(assoc %
+                 :media-descr (get-release-media-description (:id %)))
+         rels)))
 
 (defn get-artist-releases [id]
   (let [rels (db/get-artist-releases {:id id})]
